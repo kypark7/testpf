@@ -29,6 +29,7 @@ int		ft_p_atoi(const char **str, int sign)
 			sign = -1;
 		(*str)++;
 	}
+	//*에 값 넣어주기
 	if (*(*str) == '*')
 	{
 		num = va_arg(g_plist.arg, int);
@@ -50,7 +51,7 @@ void	ft_bzero(void *s, size_t n)
 {
 	char *ptr;
 
-	if (!s || n < 0)
+	if (!s || n < 0)vim 
 		return ;
 	ptr = (char *)s;
 	if (n == 0)
