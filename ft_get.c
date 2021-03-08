@@ -42,6 +42,7 @@ void	ft_get_flag(const char **format)
 	int		i;
 
 	i = -1;
+	//플래그 따라 숫자로 구분
 	while (++i < 2)
 	{
 		if (**format == '-')
@@ -54,8 +55,10 @@ void	ft_get_flag(const char **format)
 			g_plist.flags[i] = 4;
 		if (g_plist.flags[i])
 		{
+			//*랑 digit 아니면
 			if (g_plist.flags[i] != 4)
 				(*format)++;
+			//prec 값 넣기
 			g_plist.prec[i] = ft_p_atoi(format, 1);
 		}
 	}
