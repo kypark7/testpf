@@ -22,8 +22,11 @@ int				ft_type_d_i_dot(int n, int neg)
 	i = -1;
 	j = -1;
 	i += neg;
+	//큰거 선택
 	size = g_plist.prec[1] < ft_ten_size(n) ? ft_ten_size(n) : g_plist.prec[1];
+	//and 연산자
 	dot = !n && !g_plist.prec[1] ? 1 : 0;
+	//
 	if (g_plist.flags[0] == 2 || g_plist.flags[0] == 4)
 		while (-dot + ++i < g_plist.prec[0] - size)
 			write(1, " ", 1);
@@ -71,6 +74,7 @@ int				ft_type_d_i(int n, int neg)
 	int				size;
 
 	i = 0;
+	//음수일 경우
 	if (n < 0)
 	{
 		nbr = -n;
@@ -79,6 +83,7 @@ int				ft_type_d_i(int n, int neg)
 	else
 		nbr = n;
 	size = ft_ten_size(nbr);
+	//flag가 있으면
 	if (g_plist.flags[1])
 		return (ft_type_d_i_dot(nbr, neg));
 	dot = g_plist.flags[0] == 3 && !nbr && !g_plist.prec[0] ? 1 : 0;
