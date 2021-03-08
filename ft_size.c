@@ -24,6 +24,7 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
+// 몇자리수?
 int		ft_ten_size(unsigned int n)
 {
 	if (n < 10)
