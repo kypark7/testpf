@@ -26,18 +26,20 @@ int				ft_type_d_i_dot(int n, int neg)
 	size = g_plist.prec[1] < ft_ten_size(n) ? ft_ten_size(n) : g_plist.prec[1];
 	//and 연산자
 	dot = !n && !g_plist.prec[1] ? 1 : 0;
-	//
+	//'0'||* digit
 	if (g_plist.flags[0] == 2 || g_plist.flags[0] == 4)
 		while (-dot + ++i < g_plist.prec[0] - size)
 			write(1, " ", 1);
 	if (neg)
 		write(1, "-", 1);
+	//.
 	else if (g_plist.flags[0] == 3)
 		while (-dot + ++i < g_plist.prec[0] - size)
 			write(1, "0", 1);
 	while (++j < size - ft_ten_size(n))
 		write(1, "0", 1);
 	dot ? size-- : ft_putnbr_ui(n);
+	//-
 	if (g_plist.flags[0] == 1)
 		while (++i < g_plist.prec[0] - size)
 			write(1, " ", 1);
@@ -46,14 +48,17 @@ int				ft_type_d_i_dot(int n, int neg)
 
 static int		ft_flags_before(int neg, int i, int size, int dot)
 {
+	//* digit
 	if (g_plist.flags[0] == 4)
 		while (-dot + i++ < g_plist.prec[0] - size - neg)
 			write(1, " ", 1);
 	if (neg)
 		write(1, "-", 1);
+	//'0'
 	if (g_plist.flags[0] == 2)
 		while (-dot + i++ < g_plist.prec[0] - size - neg)
 			write(1, "0", 1);
+	// .
 	else if (g_plist.flags[0] == 3)
 	{
 		if (neg)
@@ -83,7 +88,7 @@ int				ft_type_d_i(int n, int neg)
 	else
 		nbr = n;
 	size = ft_ten_size(nbr);
-	//flag가 있으면
+	//두번째 플래그
 	if (g_plist.flags[1])
 		return (ft_type_d_i_dot(nbr, neg));
 	dot = g_plist.flags[0] == 3 && !nbr && !g_plist.prec[0] ? 1 : 0;
