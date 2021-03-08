@@ -41,7 +41,8 @@ int				ft_type_u(int n)
 	int				dot;
 	int				size;
 	unsigned int	nb;
-
+	
+	//unsinged int
 	nb = n < 0 ? UINT_MAX + n + 1 : n;
 	size = ft_ten_size(nb);
 	i = 0;
