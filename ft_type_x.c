@@ -14,6 +14,7 @@
 
 int			ft_flags_before(int size, int i, int dot)
 {
+	//첫번째 플래그'0'
 	if (g_plist.flags[0] == 2)
 		while (-dot + i++ < g_plist.prec[0] - size)
 		{
@@ -22,9 +23,11 @@ int			ft_flags_before(int size, int i, int dot)
 			else
 				write(1, "0", 1);
 		}
+	//첫번째 플래그'0' = .
 	else if (g_plist.flags[0] == 3)
 		while (-dot + i++ < g_plist.prec[0] - size)
 			write(1, "0", 1);
+	//첫번째 플래그 * digit
 	else if (g_plist.flags[0] == 4)
 		while (-dot + i++ < g_plist.prec[0] - size)
 			write(1, " ", 1);
@@ -41,6 +44,7 @@ int			ft_type_x_dot(unsigned int n, char *base, char *res)
 
 	i = 0;
 	j = 0;
+	//큰거
 	size = g_plist.prec[1] < ft_hex_size(n) ? ft_hex_size(n) : g_plist.prec[1];
 	x_i = ft_hex_size(n);
 	dot = !n && !g_plist.prec[1] ? 1 : 0;
@@ -66,13 +70,15 @@ int			ft_type_x(unsigned int n, int i, char *base)
 	int		size;
 	int		x_i;
 	int		dot;
-
+	
 	size = ft_hex_size(n);
 	x_i = size;
 	if (!(res = (char *)ft_calloc(sizeof(char), size + 1)))
-		return (0);
+		return (0)
+	//두번째 플래그 존재
 	if (g_plist.flags[1])
 		return (ft_type_x_dot(n, base, res));
+	//!n = true andd 첫번째 플래그 . and 처번째 prec 없 ==> dot
 	dot = !n && g_plist.flags[0] == 3 && !g_plist.prec[0] ? 1 : 0;
 	i = ft_flags_before(size, i, dot);
 	while (x_i--)
@@ -82,6 +88,7 @@ int			ft_type_x(unsigned int n, int i, char *base)
 	}
 	dot ? size-- : ft_putstr(res);
 	free(res);
+	//첫번째 플래그 -
 	if (g_plist.flags[0] == 1)
 		while (i++ < g_plist.prec[0] - size)
 			write(1, " ", 1);
