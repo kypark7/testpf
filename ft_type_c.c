@@ -21,12 +21,12 @@ int	ft_type_c(int c)
 	if (g_plist.flags[0] == 2)
 		while (i++ < g_plist.prec[0] - 1)
 			write(1, "0", 1);
-	//자리수 맞춰주장 앞부분
+	//* digit 앞부분 자리수 맞춰주기
 	else if (g_plist.flags[0] == 4)
 		while (i++ < g_plist.prec[0] - 1)
 			write(1, " ", 1);
 	ft_putchar(c);
-	//자리수 맞춰주기 뒷부분
+	// - 자리수 맞춰주기 뒷부분
 	if (g_plist.flags[0] == 1)
 		while (i++ < g_plist.prec[0] - 1)
 			write(1, " ", 1);
