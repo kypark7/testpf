@@ -45,12 +45,16 @@ void	ft_get_flag(const char **format)
 	//플래그 따라 숫자로 구분
 	while (++i < 2)
 	{
+		//좌측정렬
 		if (**format == '-')
 			g_plist.flags[i] = 1;
+		//선행이 0이 필드 너비에 대한 출력을 채움
 		else if (**format == '0')
 			g_plist.flags[i] = 2;
+		//.뒤에 따라오는 수만큼 소수점 아래를 출력
 		else if (**format == '.')
 			g_plist.flags[i] = 3;
+		// width나 .처럼 숫자가 필요한 옵션에서 숫자를 *로 대채
 		else if (**format == '*' || ft_p_isdigit((int)**format))
 			g_plist.flags[i] = 4;
 		if (g_plist.flags[i])
