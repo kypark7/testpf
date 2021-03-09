@@ -22,7 +22,7 @@ int				ft_type_d_i_dot(int n, int neg)
 	i = -1;
 	j = -1;
 	i += neg;
-	//큰거 선택
+	//큰거 선택 %5.3d 이면 3
 	size = g_plist.prec[1] < ft_ten_size(n) ? ft_ten_size(n) : g_plist.prec[1];
 	//!n !g_plist.pre[1]
 	dot = !n && !g_plist.prec[1] ? 1 : 0;
