@@ -68,3 +68,9 @@ void	ft_get_flag(const char **format)
 	}
 	return ;
 }
+
+
+//ft_printf("pointer field width      |%15p|\n", &test);
+//num2 =0 num = 1
+//num2 =1 num = 15
+//flag 4 prec 15
