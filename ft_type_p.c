@@ -35,6 +35,7 @@ static char	*ft_make_the_dst(void *ptr, int size, char *hex)
 	ptr2 = (unsigned long)ptr;
 	if (!(dst = (char *)ft_calloc(sizeof(char), size + 1)))
 		return (0);
+	//16진수로 저장
 	while (size--)
 	{
 		dst[size] = hex[ptr2 % 16];
@@ -52,16 +53,22 @@ int			ft_type_p_dot(void *ptr, char *dst, int s)
 
 	i = -1;
 	j = -1;
+	// 큰거
 	size = g_plist.prec[1] < s ? s : g_plist.prec[1];
+	//!ptr && !g_plist.pre[1] 
 	dot = !(unsigned long)ptr && !g_plist.prec[1] ? 1 : 0;
+	// 0 || * digit
 	if (g_plist.flags[0] == 2 || g_plist.flags[0] == 4)
 		while (-dot + ++i < g_plist.prec[0] - size - 2)
 			write(1, " ", 1);
 	ft_putstr("0x");
+	//0
 	while (++j < g_plist.prec[1] - ft_hex_size((unsigned long)ptr))
 		write(1, "0", 1);
+	//putstr
 	dot ? size-- : ft_putstr(dst);
 	free(dst);
+	//뒤에 공백
 	if (g_plist.flags[0] == 1)
 		while (++i < g_plist.prec[0] - size - 2)
 			write(1, " ", 1);
@@ -84,12 +91,15 @@ int			ft_type_p(void *ptr, char *hex)
 	//두번째 플래그가 있는가?
 	if (g_plist.flags[1])
 		return (ft_type_p_dot(ptr, dst, size));
-	//플래그
+	//플래그 . 이고 !ptr true 첫번째 prec
 	if (g_plist.flags[0] == 3 && !(unsigned long)ptr && !g_plist.prec[0])
 		dot = 1;
+	//그전 플래그
 	i = ft_flags_before(size, dot, i);
+	//p 
 	dot ? size-- : ft_putstr(dst);
 	free(dst);
+	//뒤에 공백
 	if (g_plist.flags[0] == 1)
 		while (i++ < g_plist.prec[0] - size - 2)
 			write(1, " ", 1);
