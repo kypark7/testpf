@@ -24,7 +24,7 @@ int				ft_type_u_dot(int n)
 	//큰거
 	size = g_plist.prec[1] < ft_ten_size(n) ? ft_ten_size(n) : g_plist.prec[1];
 	dot = !n && !g_plist.prec[1] ? 1 : 0;
-	// 첫번째 플래그 '0' * digigt
+	// 첫번째 플래그 '0' * digigt  5.3u ,1 ==ㅁㅁ001
 	if (g_plist.flags[0] == 2 || g_plist.flags[0] == 4)
 		while (-dot + ++i < g_plist.prec[0] - size)
 			write(1, " ", 1);
