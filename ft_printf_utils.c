@@ -25,6 +25,7 @@ int		ft_p_atoi(const char **str, int sign)
 	num = 0;
 	while (*(*str) == '-' || *(*str) == '0')
 	{
+		//음수
 		if (*(*str) == '-')
 			sign = -1;
 		(*str)++;
@@ -38,7 +39,7 @@ int		ft_p_atoi(const char **str, int sign)
 	else
 		while (*(*str) >= '0' && *(*str) <= '9')
 		{
-			num2 = num;
+			num2 = num; // num2=0;
 			num = num * 10 + (*(*str) - '0');
 			if (num >= LLONG_MAX || num < num2)
 				return (sign == 1 ? -1 : 0);
