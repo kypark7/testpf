@@ -84,7 +84,7 @@ int			ft_type_p(void *ptr, char *hex)
 	//두번째 플래그가 있는가?
 	if (g_plist.flags[1])
 		return (ft_type_p_dot(ptr, dst, size));
-	
+	//플래그
 	if (g_plist.flags[0] == 3 && !(unsigned long)ptr && !g_plist.prec[0])
 		dot = 1;
 	i = ft_flags_before(size, dot, i);
