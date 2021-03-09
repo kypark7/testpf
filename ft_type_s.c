@@ -35,7 +35,7 @@ int		ft_type_s_dot(char *str)
 			write(1, " ", 1);
 	while (++j < s)
 		ft_putchar(str[j]);
-	//처음 플래그 -
+	//플래그 -
 	if (g_plist.flags[0] == 1)
 		while (++i < g_plist.prec[0] - s)
 			write(1, " ", 1);
