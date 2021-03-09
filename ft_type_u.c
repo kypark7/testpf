@@ -21,14 +21,17 @@ int				ft_type_u_dot(int n)
 
 	i = -1;
 	j = -1;
+	//큰거
 	size = g_plist.prec[1] < ft_ten_size(n) ? ft_ten_size(n) : g_plist.prec[1];
 	dot = !n && !g_plist.prec[1] ? 1 : 0;
+	// 첫번째 플래그 '0' * digigt
 	if (g_plist.flags[0] == 2 || g_plist.flags[0] == 4)
 		while (-dot + ++i < g_plist.prec[0] - size)
 			write(1, " ", 1);
 	while (++j < size - ft_ten_size(n))
 		write(1, "0", 1);
 	dot ? size-- : ft_putnbr_ui(n);
+	//첫번째 플래그 = '-'
 	if (g_plist.flags[0] == 1)
 		while (++i < g_plist.prec[0] - size)
 			write(1, " ", 1);
@@ -49,13 +52,16 @@ int				ft_type_u(int n)
 	if (g_plist.flags[1])
 		return (ft_type_u_dot(nb));
 	dot = !n && g_plist.flags[0] == 3 && !g_plist.prec[0] ? 1 : 0;
+	//첫번째 0 . 
 	if (g_plist.flags[0] == 2 || g_plist.flags[0] == 3)
 		while (-dot + i++ < g_plist.prec[0] - size)
 			write(1, "0", 1);
+	//첫번째 * digit
 	else if (g_plist.flags[0] == 4)
 		while (-dot + i++ < g_plist.prec[0] - size)
 			write(1, " ", 1);
 	dot ? size-- : ft_putnbr_ui(nb);
+	//첫번째 '-'
 	if (g_plist.flags[0] == 1)
 		while (i++ < g_plist.prec[0] - size)
 			write(1, " ", 1);
