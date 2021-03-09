@@ -77,10 +77,14 @@ int			ft_type_p(void *ptr, char *hex)
 
 	i = 0;
 	dot = 0;
+	//자릿수
 	size = ft_hex_size((unsigned long)ptr);
+	//dst 만들기 size hex로 변완해서 
 	dst = ft_make_the_dst(ptr, size, hex);
+	//두번째 플래그가 있는가?
 	if (g_plist.flags[1])
 		return (ft_type_p_dot(ptr, dst, size));
+	
 	if (g_plist.flags[0] == 3 && !(unsigned long)ptr && !g_plist.prec[0])
 		dot = 1;
 	i = ft_flags_before(size, dot, i);
