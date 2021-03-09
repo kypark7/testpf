@@ -22,6 +22,7 @@ void	ft_reset_list(void)
 	g_plist.error = 0;
 }
 
+//
 void	ft_ajust(void)
 {
 	// flag가 . 이고 prec 가 < 0 일때
