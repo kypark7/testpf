@@ -12,6 +12,7 @@
 
 #include "./ft_printf.h"
 
+//초기화
 void	ft_reset_list(void)
 {
 	g_plist.flags[0] = 0;
