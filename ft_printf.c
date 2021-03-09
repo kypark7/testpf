@@ -77,5 +77,5 @@ int		ft_printf(const char *format, ...)
 		format++;//증가
 	}
 	va_end(g_plist.arg); //마지막
-	return (sum); //길이값 넘겨주기
+	return (sum); //출력된 바이트 개수 넘겨주기
 }
